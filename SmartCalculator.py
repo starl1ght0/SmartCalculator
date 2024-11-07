@@ -1,7 +1,7 @@
+from PyQt5 import QtWidgets
 from PyQt5.QtGui import QFont
-from PyQt5.QtWidgets import (QApplication, QWidget, QTabWidget, QVBoxLayout, QDateEdit, QGridLayout, QPushButton,
+from PyQt5.QtWidgets import (QApplication, QWidget, QTabWidget, QGridLayout, QPushButton,
                              QLineEdit, QFormLayout)
-from PyQt5.QtCore import Qt
 import sys
 
 class Calculator(QWidget):
@@ -9,25 +9,6 @@ class Calculator(QWidget):
         super().__init__(*args, **kwargs)
 
         self.initUI()
-        main_layout = QGridLayout(self)
-        self.setLayout(main_layout)
-
-        # create a tab widget
-        tab = QTabWidget(self)
-        # first page
-        personal_page = QWidget(self)
-        layout = QFormLayout()
-        personal_page.setLayout(layout)
-        personal_page.setFixedSize(100, 20)
-        # second page
-        contact_page = QWidget(self)
-        layout = QFormLayout()
-        contact_page.setLayout(layout)
-        contact_page.setFixedSize(100, 20)
-        tab.addTab(personal_page, 'Personal Info')
-        tab.addTab(contact_page, 'Contact Info')
-        tab.resize(0, 0)
-        self.show()
 
     def initUI(self):
         grid = QGridLayout()  # Создание сетки grid
@@ -88,6 +69,25 @@ class Calculator(QWidget):
         grid.setContentsMargins(200, 100, 200, 200)
         grid.setHorizontalSpacing(10)
         grid.setVerticalSpacing(20)
+
+        # create a tab widget
+        tab = QTabWidget(self)
+
+        # first page
+        tab_default_Calc = QWidget(self)
+        # layout = QFormLayout()
+        # tab_default_Calc.setLayout(layout)
+        # tab_default_Calc.setFixedSize(20, 20)
+
+        # second page
+        tab_smart_Calc = QWidget(self)
+        # layout = QFormLayout()
+        # tab_smart_Calc.setLayout(layout)
+        #  tab_smart_Calc.setFixedSize(100, 100)
+
+        tab.addTab(tab_default_Calc, 'Default calculator')
+        tab.addTab(tab_smart_Calc, 'SMART calculator')
+        tab.resize(215, 30)
 
     def append_text(self):
         button = self.sender()
